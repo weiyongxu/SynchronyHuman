@@ -33,6 +33,11 @@ GA_D= mne.grand_average([mne.read_epochs(os.path.join(study_path,ID+"_ICA_cleane
 
 mne.viz.plot_evoked_topo([GA_ES,GA_ED,GA_IS,GA_ID])
 
+GA_ES.plot_joint()  
+GA_ED.plot_joint()  
+GA_IS.plot_joint()
+GA_ID.plot_joint()
+
 mne.viz.plot_evoked_topo([GA_E,GA_I])
 mne.viz.plot_evoked_topo([GA_S,GA_D])
 
@@ -43,6 +48,6 @@ mne.viz.plot_evoked_topo([GA_EI_diff])
 mne.viz.plot_evoked_topo([GA_SD_diff])
 
 
-# for ID in ES_ID:
-#     mne.viz.plot_evoked_topo(mne.read_epochs(os.path.join(study_path,ID+"_ICA_cleaned-epo.fif")).average().apply_baseline((None,0)),
-#                              title=ID) 
+for ID in exp.index:
+    mne.viz.plot_evoked_topo(mne.read_epochs(os.path.join(study_path,ID+"_ICA_cleaned-epo.fif")).average().apply_baseline((None,0)),
+                              title=ID) 
